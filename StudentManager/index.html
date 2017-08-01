@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>学生信息管理</title>
+	<meta charset="utf-8" />
+    <script src="scripts/jquery-3.1.1.js"></script>
+    <script>
+        $(function () {
+            $.post(
+                "SelectStudentInfoAll.ashx",
+                {
+
+                },
+                function (data, status) {
+                    if (status == "success") {
+                        $("#stuInfo").html(data);
+                    }
+                });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <p><input type="button" name="addbtn" id="addbtn" value="添加学生信息" /></p>
+        <table width="600" border="1" align="center" id="stuInfo">
+            <tr><td><input type="button" name="addbtn" id="addbtn" value="添加学生信息" /></td></tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <form  action="Handler1.ashx" method="get">
+        姓名：<input type="text" name="name" value="" /><br />
+        年龄：<input type="text" name="age" value="" /><br />
+        爱好:<input type="checkbox" name="isVIP" /><br />
+        <textarea name="msg"></textarea>
+        <select name="prov">
+            <option value="bj">北京</option>
+            <option value="sh">上海</option>
+            <option value="jn">济宁</option>
+        </select>
+        性别：
+        <ul>
+            <li><input type="radio" name="gender" value="nan" />男</li>
+            <li><input type="radio" name="gender" value="nv" />女</li>
+        </ul>
+        民族：
+        <ul>
+            <li><input type="radio" name="mz" value="hanzu" />汉族</li>
+            <li><input type="radio" name="mz" value="huzu" />回族</li>
+        </ul>
+        <input type="submit" value="提交" />
+    </form>
+    
+</body>
+</html>

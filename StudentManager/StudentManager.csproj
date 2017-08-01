@@ -9,12 +9,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A0A6C643-8719-4B87-96DC-62A325C5D6C6}</ProjectGuid>
+    <ProjectGuid>{010C9FFF-0008-4C59-8001-0169A32BEC8B}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Asp</RootNamespace>
-    <AssemblyName>Asp</AssemblyName>
+    <RootNamespace>StudentManager</RootNamespace>
+    <AssemblyName>StudentManager</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -94,17 +94,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="insert.html" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestHandler1.ashx">
-      <BrowseToURL></BrowseToURL>
-    </Content>
-    <Content Include="Handler1.ashx" />
-    <Content Include="LoginHandler.ashx" />
-    <Content Include="ApplicationHandler.ashx" />
-    <Content Include="ApplicationHandler1.ashx" />
+    <Content Include="SelectStudentInfoAll.ashx" />
+    <Content Include="AddStuInfo.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -113,39 +109,34 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="correct.html" />
-    <Content Include="error.html" />
     <Content Include="index.html" />
-    <Content Include="login.html" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="scripts\jquery-3.1.1.js" />
     <Content Include="Web.config" />
-    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationHandler.ashx.cs">
-      <DependentUpon>ApplicationHandler.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="ApplicationHandler1.ashx.cs">
-      <DependentUpon>ApplicationHandler1.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="Handler1.ashx.cs">
-      <DependentUpon>Handler1.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="LoginHandler.ashx.cs">
-      <DependentUpon>LoginHandler.ashx</DependentUpon>
+    <Compile Include="AddStuInfo.ashx.cs">
+      <DependentUpon>AddStuInfo.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestHandler1.ashx.cs">
-      <DependentUpon>TestHandler1.ashx</DependentUpon>
+    <Compile Include="SelectStudentInfoAll.ashx.cs">
+      <DependentUpon>SelectStudentInfoAll.ashx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StudentBLL\StudentBLL.csproj">
+      <Project>{ddd38d09-b239-4d20-9eec-98f23f10f851}</Project>
+      <Name>StudentBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StudentDAL\StudentDAL.csproj">
+      <Project>{247E5B2F-B38C-4D50-8A4E-D1235BAB9FDF}</Project>
+      <Name>StudentDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StudentModel\StudentModel.csproj">
+      <Project>{b8b06d4c-197e-40eb-915e-d2d1e9913ca4}</Project>
+      <Name>StudentModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -160,9 +151,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2591</DevelopmentServerPort>
+          <DevelopmentServerPort>3364</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:2591/</IISUrl>
+          <IISUrl>http://localhost:3364/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
