@@ -99,8 +99,13 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="revamp.html" />
     <Content Include="SelectStudentInfoAll.ashx" />
     <Content Include="AddStuInfo.ashx" />
+    <Content Include="DeleteStuInfo.ashx" />
+    <Content Include="DimShowInfo.ashx" />
+    <Content Include="RevampShowInfo.ashx" />
+    <Content Include="Update.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -119,9 +124,22 @@
     <Compile Include="AddStuInfo.ashx.cs">
       <DependentUpon>AddStuInfo.ashx</DependentUpon>
     </Compile>
+    <Compile Include="CommonHelper.cs" />
+    <Compile Include="DeleteStuInfo.ashx.cs">
+      <DependentUpon>DeleteStuInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DimShowInfo.ashx.cs">
+      <DependentUpon>DimShowInfo.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RevampShowInfo.ashx.cs">
+      <DependentUpon>RevampShowInfo.ashx</DependentUpon>
+    </Compile>
     <Compile Include="SelectStudentInfoAll.ashx.cs">
       <DependentUpon>SelectStudentInfoAll.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Update.ashx.cs">
+      <DependentUpon>Update.ashx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

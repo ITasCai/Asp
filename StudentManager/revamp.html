@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="scripts/jquery-3.1.1.js"></script>
+    <script>
+    
+
+        $(document).ready(function () {
+            
+            $.post(
+                  "RevampShowInfo.ashx",
+                  {
+                      id: window.location.search.toString().slice(1),
+                  },
+                  function (data, status) {
+                      if (status == "success") {
+                          var da = data + "";
+                          var valuelist = da.split(",", 5);
+                          $("#name").val(valuelist[0]);
+                          $("#age").val(valuelist[1]);
+                          $(":radio").each(function () {
+                              if ($(this).val() == valuelist[2]) {
+                                  $(this).prop("checked", true);
+                              }
+                          });
+                          $("#major").val(valuelist[3]);
+                          $("#class").val(valuelist[4]);
+
+                      }
+                  }
+              );
+
+        })
+
+    </script>
+
+
+    <script>
+
+
+        function getStuSex() {
+            if ($("#sex").is(":checked")) {
+                return "男";
+            } else {
+                return "女";
+            }
+        }
+        $(function () {
+            
+            $("#revampBtn").click(function () {
+          
+                    $.post(
+                        "Update.ashx",
+                        {
+                            StuNo: window.location.search.toString().slice(1),
+                            StuName: $("#name").val(),
+                            StuAge: $("#age").val(),
+                            StuMajor: $("#major").val(),
+                            StuClass: $("#class").val(),
+                            StuSex: getStuSex()
+                        },
+                        function (data, status) {
+                            if (status == "success") {
+                                alert("修改成功")
+                                window.location.href = "index.html"
+                            } else {
+                                alert("修改失败")
+                            }
+                        }
+
+                    )
+              
+            })
+        });
+    </script>
+
+</head>
+<body>
+    <table width="600" border="1" align="center">
+        <tr>
+            <td colspan="4" align="center"><strong>添加学生信息</strong></td>
+        </tr>
+        <tr>
+            <td>学号：</td>
+            <td><input type="text" name="id" id="id" /></td>
+            <td>姓名：</td>
+            <td><input type="text" name="name" id="name" /></td>
+        <tr>
+            <td>性别：</td>
+            <td>
+                <input type="radio" name="radio" id="sex" value="男" checked="checked" />男
+                <input type="radio" name="radio" id="sex2" value="女" checked="checked" />女
+            </td>
+            <td>年龄：</td>
+            <td><input type="text" name="age" id="age" /></td>
+        </tr>
+        <tr>
+            <td>专业：</td>
+            <td><input type="text" name="major" id="major" /></td>
+            <td>班级：</td>
+            <td><input type="text" name="class" id="class" /></td>
+        </tr>
+        <tr>
+            <td colspan="4" align="center"><input type="button" name="revampBtn" id="revampBtn" value="修改" /></td>
+        </tr>
+    </table>
+</body>
+</html>

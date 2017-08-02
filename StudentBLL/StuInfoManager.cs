@@ -20,9 +20,42 @@ namespace StudentBLL
             return StuInfoService.GetAll();
         }
 
+        /// <summary>
+        /// 添加学生信息
+        /// </summary>
+        /// <param name="stu"></param>
+        /// <returns></returns>
         public static int AddStuInfo(StuInfo stu)
         {
             return StuInfoService.AddStuInfo(stu);
         }
+
+
+        /// <summary>
+        /// 删除学生信息
+        /// </summary>
+        /// <param name="stuNo"></param>
+        /// <returns></returns>
+        public static int DelStuInfo(StuInfo stu)
+        {
+            return StuInfoService.DelStuInfo(stu);
+        }
+
+
+        public static List<StuInfo> DimStu(string name)
+        {
+            return StuInfoService.DimStu(name);
+        }
+
+        public static int AlertStu(StuInfo stu)
+        {
+            return StuInfoService.AlertStu(stu);
+        }
+
+        public static StuInfo GetStuInfoByno(string stuno)
+        {
+            return StuInfoService.GetStuInfoByno(stuno);
+        }
+
         }
 }

@@ -10,22 +10,103 @@
             $.post(
                 "SelectStudentInfoAll.ashx",
                 {
-
+                  
                 },
                 function (data, status) {
                     if (status == "success") {
                         $("#stuInfo").html(data);
                     }
                 });
+
+
         });
     </script>
+
+
+    <script>
+        $(function () {
+
+            $("#deletebtn").click(function () {
+                $.post(
+            "DeleteStuInfo.ashx",
+            {
+                id: $("#stuInfo input:checkbox:checked").parent().siblings().first().text()
+            },
+            function (data, status) {
+                if (status == "success") {
+                    alert("删除成功");
+                    $("#stuInfo").html(data);
+                    window.location.reload();
+                }
+            });
+            })
+        
+        });
+    </script>
+
+
+    <script>
+        $(function () {
+            $("#mhcx").click(function () {
+
+
+                $.post(
+                    "DimShowInfo.ashx",
+                    {
+                    
+                        StuName: $("#txtname").val(),
+                     
+                    },
+                    function (data, status) {
+                        if (status == "success") {
+                            alert("查询成功")
+                            $("#stuInfo").html(data);
+                           // window.location.reload();
+                        } else {
+                            alert("查询失败")
+                        }
+                    }
+
+                )
+            })
+        })
+
+    </script>
+
+    <!--<script>
+        $(function () {
+            $("#xgbtn").click(function () {
+                window.open("revamp.html", "revamp", "left=400,top=200,height=300,width=400,resizable=no,scrollbars=yes,status=no,toolbar=no,menubar=no,location=no");
+               
+            })
+
+        })
+     
+    </script>-->
+
+    <script>
+        $(function () {
+            $("#xgbtn").click(function () {
+                var value = $("#stuInfo input:checkbox:checked").parent().siblings().first().text();
+                alert(value);
+                window.location.href = "revamp.html?" + value;
+
+            })
+        })
+    </script>
+
 </head>
 <body>
     <div>
-        <p><input type="button" name="addbtn" id="addbtn" value="添加学生信息" /></p>
+      <label>请输入姓名</label>
+        <input type="text" name="stuname" value=""  id="txtname"/>
+        <input type="button" name="name" value="查询" id="mhcx" />
         <table width="600" border="1" align="center" id="stuInfo">
-            <tr><td><input type="button" name="addbtn" id="addbtn" value="添加学生信息" /></td></tr>
+        
         </table>
+        <a href="insert.html"><input type="button" name="addbtn" id="addbtn" value="添加学生信息" /></a>
+        <input type="button" name="deletebtn" id="deletebtn" value="删除学生信息" />
+        <input type="button" name="xgbtn" id="xgbtn" value="修改学生信息" />
     </div>
 </body>
 </html>

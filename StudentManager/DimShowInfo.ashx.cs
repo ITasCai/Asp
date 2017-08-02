@@ -2,23 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Text;
 using StudentModel;
 using StudentBLL;
+using System.Text;
+using System.Runtime.Remoting.Contexts;
 
 namespace StudentManager
 {
     /// <summary>
-    /// SelectStudentInfoAll 的摘要说明
+    /// DimShowInfo 的摘要说明
     /// </summary>
-    public class SelectStudentInfoAll : IHttpHandler
+    public class DimShowInfo : IHttpHandler
     {
 
         public void ProcessRequest(HttpContext context)
         {
-            context.Response.ContentType = "text/html";
-            context.Response.Write(GetTabRow());
-
+            context.Response.ContentType = "text/plain";
+   
+            string name = context.Request["StuName"];
+            context.Response.Write(GetDimShow(name));
         }
 
         public bool IsReusable
@@ -28,10 +30,12 @@ namespace StudentManager
                 return false;
             }
         }
-
-        public static string GetTabRow() {
+        public static string GetDimShow(string student) { 
+            
             StringBuilder sbHtml = new StringBuilder();
-            List<StuInfo> list = StuInfoManager.GetAll();
+     
+            List<StuInfo> list = StuInfoManager.DimStu(student);
+
             sbHtml.Append("<tr>");
             sbHtml.Append("<td></td>");
             sbHtml.Append("<td class='xh'>学号</td>");
@@ -47,12 +51,12 @@ namespace StudentManager
             {
                 sbHtml.Append("<tr>");
                 sbHtml.Append("<td><input type='checkbox'/></td>");
-                sbHtml.Append("<td>"+stu.StuNo+"</td>");
-                sbHtml.Append("<td>"+stu.StuName+"</td>");
-                sbHtml.Append("<td>"+stu.StuSex+"</td>");
-                sbHtml.Append("<td>"+stu.StuAge+"</td>");
-                sbHtml.Append("<td>"+stu.StuMajor+"</td>");
-                sbHtml.Append("<td>"+stu.StuClass+"</td>");
+                sbHtml.Append("<td>" + stu.StuNo + "</td>");
+                sbHtml.Append("<td>" + stu.StuName + "</td>");
+                sbHtml.Append("<td>" + stu.StuSex + "</td>");
+                sbHtml.Append("<td>" + stu.StuAge + "</td>");
+                sbHtml.Append("<td>" + stu.StuMajor + "</td>");
+                sbHtml.Append("<td>" + stu.StuClass + "</td>");
                 sbHtml.Append("<td><input type='button' id='btndel'value='删除'></td>");
                 sbHtml.Append("</tr>");
             }
@@ -60,4 +64,4 @@ namespace StudentManager
 
         }
     }
-}
+    }
